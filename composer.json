@@ -1,5 +1,5 @@
 {
-  "name": "AsistenteWeb/nuSOAP",
+  "name": "asistenteweb/nusoap",
   "type": "library",
   "description": "PHP5 library for SOAP.",
   "keywords": ["SOAP", "nuSOAP", "asistenteweb"],
