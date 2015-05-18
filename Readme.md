@@ -1,7 +1,7 @@
 AsistenteWeb - nuSOAP
 =====================
 
-AsistenteWeb/nuSOAP is a fork of NuSphere NuSOAP with some fixes.
+AsistenteWeb/nuSOAP based in NuSphere NuSOAP.
 
 It is a set of PHP classes.  
 No PHP extensions required.
