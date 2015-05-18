@@ -1,5 +1,5 @@
 <?php
-
+namespace Aw\Nusoap;
 /**
 *
 * [nu]soapclient higher level class for easy usage.

@@ -1,4 +1,5 @@
 <?php
+namespace Aw\Nusoap;
 /*
 The NuSOAP project home is:
 http://sourceforge.net/projects/nusoap/
