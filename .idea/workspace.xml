@@ -2,50 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c44ef2e7-2eb9-40a3-8d47-e30c5df91522" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/SOAP.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/changelog" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/class.nusoap_base.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/class.soap_fault.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/class.soap_parser.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/class.soap_server.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/class.soap_transport_http.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/class.soap_val.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/class.soapclient.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/class.wsdl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/class.wsdlcache.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/class.xmlschema.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/client1.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/client2.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/client3.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/getfile1client.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/getfile2client.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/mimeclient.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/nusoapmime.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/sslclient.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/wsdlclient1.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/wsdlclient10.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/wsdlclient11.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/wsdlclient12.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/wsdlclient13.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/wsdlclient14.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/wsdlclient15.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/wsdlclient2.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/wsdlclient3.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/wsdlclient3b.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/wsdlclient3c.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/wsdlclient4.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/wsdlclient5.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/wsdlclient6.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/wsdlclient7.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/wsdlclient8.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/wsdlclient9.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SOAP.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,16 +28,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="class.nusoap_base.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/class.nusoap_base.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-112.14815" vertical-offset="374" max-vertical-offset="17370">
-              <caret line="224" column="20" selection-start-line="224" selection-start-column="20" selection-end-line="224" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="client1.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/samples/client1.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -160,11 +108,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wsdlclient15.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="wsdlclient15.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/samples/wsdlclient15.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1188">
+            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1188">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.04040404" vertical-offset="0" max-vertical-offset="891">
+              <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -196,6 +154,7 @@
         <option value="$PROJECT_DIR$/lib/class.soap_server.php" />
         <option value="$PROJECT_DIR$/lib/class.nusoap_base.php" />
         <option value="$PROJECT_DIR$/lib/class.soap_fault.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -453,13 +412,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="891">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/Core.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.71875" vertical-offset="13455" max-vertical-offset="18360">
@@ -604,6 +556,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1188">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.04040404" vertical-offset="0" max-vertical-offset="891">
+          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
           <folding />
         </state>
       </provider>
