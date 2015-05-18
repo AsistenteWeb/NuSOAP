@@ -54,5 +54,6 @@ http://sourceforge.net/projects/nusoap/files/nusoap-docs/0.9.5/nusoap-docs-0.9.5
 
 TODO
 ----
-- Test
 - Rewrite Documentation
+- Rewrite Samples
+- Test
