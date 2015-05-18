@@ -11,10 +11,11 @@ namespace Aw\Nusoap;
 * xsd:anyType and user-defined types.
 *
 * @author   Dietrich Ayala <dietrich@ganx4.com>
+ * @author   Yamir Ramirez <ysramire@gmail.com>
 * @version  $Id: class.soap_val.php,v 1.11 2007/04/06 13:56:32 snichol Exp $
 * @access   public
 */
-class soapval extends nusoap_base {
+class Soapval extends NusoapBase {
 	/**
 	 * The XML element name
 	 *
@@ -69,7 +70,7 @@ class soapval extends nusoap_base {
 	* @param	mixed $attributes associative array of attributes to add to element serialization
 	* @access   public
 	*/
-  	function soapval($name='soapval',$type=false,$value=-1,$element_ns=false,$type_ns=false,$attributes=false) {
+  	function __construct($name='soapval',$type=false,$value=-1,$element_ns=false,$type_ns=false,$attributes=false) {
 		parent::__construct();;
 		$this->name = $name;
 		$this->type = $type;

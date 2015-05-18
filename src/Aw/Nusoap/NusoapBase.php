@@ -2,7 +2,7 @@
 namespace Aw\Nusoap;
 
 /*
-$Id: class.nusoap_base.php,v 1.56 2010/04/26 20:15:08 snichol Exp $
+$Id: class.nusoap_base.php,v 1.56 2015/05/18 20:15:08 snichol Exp $
 
 NuSOAP - Web Services Toolkit for PHP
 
@@ -80,10 +80,11 @@ $GLOBALS['_transient']['static']['nusoap_base']['globalDebugLevel'] = 9;
 *
 * @author   Dietrich Ayala <dietrich@ganx4.com>
 * @author   Scott Nichol <snichol@users.sourceforge.net>
-* @version  $Id: class.nusoap_base.php,v 1.56 2010/04/26 20:15:08 snichol Exp $
+* @author   Yamir Ramirez <ysramire@gmail.com>
+* @version  $Id: class.nusoap_base.php,v 1.56 2015/05/18 20:15:08 snichol Exp $
 * @access   public
 */
-class nusoap_base {
+class NusoapBase {
 	/**
 	 * Identification for HTTP headers.
 	 *
@@ -178,7 +179,7 @@ class nusoap_base {
 	/**
 	* XML Schema types in an array of uri => (array of xml type => php type)
 	* is this legacy yet?
-	* no, this is used by the nusoap_xmlschema class to verify type => namespace mappings.
+	* no, this is used by the NusoapXmlschema class to verify type => namespace mappings.
 	* @var      array
 	* @access   public
 	*/
@@ -410,7 +411,7 @@ class nusoap_base {
 		$this->appendDebug('value=' . $this->varDump($val));
 		$this->appendDebug('attributes=' . $this->varDump($attributes));
 		
-    	if (is_object($val) && get_class($val) == 'soapval' && (! $soapval)) {
+    	if (is_object($val) && get_class($val) == 'Aw\Nusoap\Soapval' && (! $soapval)) {
     		$this->debug("serialize_val: serialize soapval");
         	$xml = $val->serialize($use);
 			$this->appendDebug($val->getDebug());
@@ -531,7 +532,7 @@ class nusoap_base {
 				break;
 			case is_object($val):
 		   		$this->debug("serialize_val: serialize object");
-		    	if (get_class($val) == 'soapval') {
+		    	if (get_class($val) == 'Aw\Nusoap\Soapval') {
 		    		$this->debug("serialize_val: serialize soapval object");
 		        	$pXml = $val->serialize($use);
 					$this->appendDebug($val->getDebug());
@@ -567,7 +568,7 @@ class nusoap_base {
 					$i = 0;
 					if(is_array($val) && count($val)> 0){
 						foreach($val as $v){
-	                    	if(is_object($v) && get_class($v) ==  'soapval'){
+	                    	if(is_object($v) && get_class($v) ==  'Aw\Nusoap\Soapval'){
 								$tt_ns = $v->type_ns;
 								$tt = $v->type;
 							} elseif (is_array($v)) {
@@ -696,7 +697,7 @@ class nusoap_base {
 		if (is_array($headers)) {
 			$xml = '';
 			foreach ($headers as $k => $v) {
-				if (is_object($v) && get_class($v) == 'soapval') {
+				if (is_object($v) && get_class($v) == 'Aw\Nusoap\Soapval') {
 					$xml .= $this->serialize_val($v, false, false, false, false, false, $use);
 				} else {
 					$xml .= $this->serialize_val($v, $k, false, false, false, false, $use);

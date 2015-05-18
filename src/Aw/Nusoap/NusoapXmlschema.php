@@ -1,18 +1,17 @@
 <?php
 namespace Aw\Nusoap;
 
-
-
 /**
 * parses an XML Schema, allows access to it's data, other utility methods.
 * imperfect, no validation... yet, but quite functional.
 *
 * @author   Dietrich Ayala <dietrich@ganx4.com>
 * @author   Scott Nichol <snichol@users.sourceforge.net>
-* @version  $Id: class.xmlschema.php,v 1.53 2010/04/26 20:15:08 snichol Exp $
+ * @author   Yamir Ramirez <ysramire@gmail.com>
+* @version  $Id: class.xmlschema.php,v 1.53 2015/05/18 20:15:08 snichol Exp $
 * @access   public
 */
-class nusoap_xmlschema extends nusoap_base  {
+class NusoapXmlschema extends NusoapBase  {
 	
 	// files
 	var $schema = '';
@@ -51,9 +50,9 @@ class nusoap_xmlschema extends nusoap_base  {
 	* @param	string $namespaces namespaces defined in enclosing XML
 	* @access   public
 	*/
-	function nusoap_xmlschema($schema='',$xml='',$namespaces=array()){
+	function __construct($schema='',$xml='',$namespaces=array()){
 		parent::__construct();;
-		$this->debug('nusoap_xmlschema class instantiated, inside constructor');
+		$this->debug('NusoapXmlschema class instantiated, inside constructor');
 		// files
 		$this->schema = $schema;
 		$this->xml = $xml;
@@ -928,7 +927,7 @@ class nusoap_xmlschema extends nusoap_base  {
 	* @param string $phpType (should always be scalar)
 	* @param array $enumeration array of values
 	* @access public
-	* @see nusoap_xmlschema
+	* @see NusoapXmlschema
 	* @see getTypeDef
 	*/
 	function addSimpleType($name, $restrictionBase='', $typeClass='simpleType', $phpType='scalar', $enumeration=array()) {
@@ -948,7 +947,7 @@ class nusoap_xmlschema extends nusoap_base  {
 	* adds an element to the schema
 	*
 	* @param array $attrs attributes that must include name and type
-	* @see nusoap_xmlschema
+	* @see NusoapXmlschema
 	* @access public
 	*/
 	function addElement($attrs) {
@@ -966,7 +965,7 @@ class nusoap_xmlschema extends nusoap_base  {
 /**
  * Backward compatibility
  */
-class XMLSchema extends nusoap_xmlschema {
+class XMLSchema extends NusoapXmlschema {
 }
 
 

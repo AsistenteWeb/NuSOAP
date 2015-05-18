@@ -9,10 +9,11 @@ namespace Aw\Nusoap;
 * 
 * @author   Dietrich Ayala <dietrich@ganx4.com>
 * @author   Scott Nichol <snichol@users.sourceforge.net>
-* @version  $Id: class.wsdl.php,v 1.76 2010/04/26 20:15:08 snichol Exp $
+ * @author   Yamir Ramirez <ysramire@gmail.com>
+* @version  $Id: class.wsdl.php,v 1.76 2015/05/18 20:15:08 snichol Exp $
 * @access public 
 */
-class wsdl extends nusoap_base {
+class Wsdl extends NusoapBase {
 	// URL or filename of the root of this WSDL
     var $wsdl; 
     // define internal arrays of bindings, ports, operations, messages, etc.
@@ -69,7 +70,7 @@ class wsdl extends nusoap_base {
 	 * @param boolean $use_curl try to use cURL
      * @access public 
      */
-    function wsdl($wsdl = '',$proxyhost=false,$proxyport=false,$proxyusername=false,$proxypassword=false,$timeout=0,$response_timeout=30,$curl_options=null,$use_curl=false){
+    function __construct($wsdl = '',$proxyhost=false,$proxyport=false,$proxyusername=false,$proxypassword=false,$timeout=0,$response_timeout=30,$curl_options=null,$use_curl=false){
 		parent::__construct();
 		$this->debug("ctor wsdl=$wsdl timeout=$timeout response_timeout=$response_timeout");
         $this->proxyhost = $proxyhost;
@@ -207,7 +208,7 @@ class wsdl extends nusoap_base {
         if (isset($wsdl_props['scheme']) && ($wsdl_props['scheme'] == 'http' || $wsdl_props['scheme'] == 'https')) {
             $this->debug('getting WSDL http(s) URL ' . $wsdl);
         	// get wsdl
-	        $tr = new soap_transport_http($wsdl, $this->curl_options, $this->use_curl);
+	        $tr = new SoapTransportHttp($wsdl, $this->curl_options, $this->use_curl);
 			$tr->request_method = 'GET';
 			$tr->useSOAPAction = false;
 			if($this->proxyhost && $this->proxyport){
@@ -306,7 +307,7 @@ class wsdl extends nusoap_base {
         	$this->debug('Parsing WSDL schema');
             // $this->debug("startElement for $name ($attrs[name]). status = $this->status (".$this->getLocalPart($name).")");
             $this->status = 'schema';
-            $this->currentSchema = new nusoap_xmlschema('', '', $this->namespaces);
+            $this->currentSchema = new NusoapXmlschema('', '', $this->namespaces);
             $this->currentSchema->schemaStartElement($parser, $name, $attrs);
             $this->appendDebug($this->currentSchema->getDebug());
             $this->currentSchema->clearDebug();
@@ -691,7 +692,7 @@ class wsdl extends nusoap_base {
     * @param string $ns namespace (not prefix) of the type
     * @return mixed
     * @access public
-    * @see nusoap_xmlschema
+    * @see NusoapXmlschema
     */
 	function getTypeDef($type, $ns) {
 		$this->debug("in getTypeDef: type=$type, ns=$ns");
@@ -1298,7 +1299,7 @@ class wsdl extends nusoap_base {
 		}
 
 		// if a soapval has been supplied, let its type override the WSDL
-    	if (is_object($value) && get_class($value) == 'soapval') {
+    	if (is_object($value) && get_class($value) == 'Aw\Nusoap\Soapval') {
     		if ($value->type_ns) {
     			$type = $value->type_ns . ':' . $value->type;
 		    	$forceType = true;
@@ -1776,7 +1777,7 @@ class wsdl extends nusoap_base {
 	* @param array $elements e.g. array ( name => array(name=>'',type=>'') )
 	* @param array $attrs e.g. array(array('ref'=>'SOAP-ENC:arrayType','wsdl:arrayType'=>'xsd:string[]'))
 	* @param string $arrayType as namespace:name (xsd:string)
-	* @see nusoap_xmlschema
+	* @see NusoapXmlschema
 	* @access public
 	*/
 	function addComplexType($name,$typeClass='complexType',$phpType='array',$compositor='',$restrictionBase='',$elements=array(),$attrs=array(),$arrayType='') {
@@ -1823,7 +1824,7 @@ class wsdl extends nusoap_base {
 	* @param string $typeClass (should always be simpleType)
 	* @param string $phpType (should always be scalar)
 	* @param array $enumeration array of values
-	* @see nusoap_xmlschema
+	* @see NusoapXmlschema
 	* @access public
 	*/
 	function addSimpleType($name, $restrictionBase='', $typeClass='simpleType', $phpType='scalar', $enumeration=array()) {
@@ -1837,7 +1838,7 @@ class wsdl extends nusoap_base {
 	* adds an element to the WSDL types
 	*
 	* @param array $attrs attributes that must include name and type
-	* @see nusoap_xmlschema
+	* @see NusoapXmlschema
 	* @access public
 	*/
 	function addElement($attrs) {

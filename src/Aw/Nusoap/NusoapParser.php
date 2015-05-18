@@ -5,14 +5,15 @@ namespace Aw\Nusoap;
 
 /**
 *
-* nusoap_parser class parses SOAP XML messages into native PHP values
+* NusoapParser class parses SOAP XML messages into native PHP values
 *
 * @author   Dietrich Ayala <dietrich@ganx4.com>
 * @author   Scott Nichol <snichol@users.sourceforge.net>
-* @version  $Id: class.soap_parser.php,v 1.42 2010/04/26 20:15:08 snichol Exp $
+ * @author   Yamir Ramirez <ysramire@gmail.com>
+* @version  $Id: class.soap_parser.php,v 1.42 2015/05/18 20:15:08 snichol Exp $
 * @access   public
 */
-class nusoap_parser extends nusoap_base {
+class NusoapParser extends NusoapBase {
 
 	var $xml = '';
 	var $xml_encoding = '';
@@ -57,7 +58,7 @@ class nusoap_parser extends nusoap_base {
 	* @param    string $decode_utf8 whether to decode UTF-8 to ISO-8859-1
 	* @access   public
 	*/
-	function nusoap_parser($xml,$encoding='UTF-8',$method='',$decode_utf8=true){
+	function __construct($xml,$encoding='UTF-8',$method='',$decode_utf8=true){
 		parent::__construct();;
 		$this->xml = $xml;
 		$this->xml_encoding = $encoding;
@@ -89,7 +90,7 @@ class nusoap_parser extends nusoap_base {
 			} else {
 				$this->debug('No XML declaration');
 			}
-			$this->debug('Entering nusoap_parser(), length='.strlen($xml).', encoding='.$encoding);
+			$this->debug('Entering NusoapParser(), length='.strlen($xml).', encoding='.$encoding);
 			// Create an XML parser - why not xml_parser_create_ns?
 			$this->parser = xml_parser_create($this->xml_encoding);
 			// Set the options for parsing the XML data.
@@ -112,7 +113,7 @@ class nusoap_parser extends nusoap_base {
 				$this->debug("XML payload:\n" . $xml);
 				$this->setError($err);
 			} else {
-				$this->debug('in nusoap_parser ctor, message:');
+				$this->debug('in NusoapParser ctor, message:');
 				$this->appendDebug($this->varDump($this->message));
 				$this->debug('parsed successfully, found root struct: '.$this->root_struct.' of name '.$this->root_struct_name);
 				// get final value
@@ -636,5 +637,5 @@ class nusoap_parser extends nusoap_base {
 /**
  * Backward compatibility
  */
-class soap_parser extends nusoap_parser {
+class soap_parser extends NusoapParser {
 }

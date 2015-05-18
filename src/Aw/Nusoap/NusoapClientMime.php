@@ -1,7 +1,7 @@
 <?php
 namespace Aw\Nusoap;
 /*
-$Id: nusoapmime.php,v 1.13 2010/04/26 20:15:08 snichol Exp $
+$Id: nusoapmime.php,v 1.13 2015/05/18 20:15:08 snichol Exp $
 
 NuSOAP - Web Services Toolkit for PHP
 
@@ -49,10 +49,11 @@ require_once('Mail/mimePart.php');
 *
 * @author   Scott Nichol <snichol@users.sourceforge.net>
 * @author	Thanks to Guillaume and Henning Reich for posting great attachment code to the mail list
-* @version  $Id: nusoapmime.php,v 1.13 2010/04/26 20:15:08 snichol Exp $
+ * @author   Yamir Ramirez <ysramire@gmail.com>
+* @version  $Id: nusoapmime.php,v 1.13 2015/05/18 20:15:08 snichol Exp $
 * @access   public
 */
-class nusoap_client_mime extends nusoap_client {
+class NusoapClientMime extends NusoapClient {
 	/**
 	 * @var array Each array element in the return is an associative array with keys
 	 * data, filename, contenttype, cid
@@ -269,7 +270,7 @@ class nusoap_client_mime extends nusoap_client {
  *	For backwards compatiblity, define soapclientmime unless the PHP SOAP extension is loaded.
  */
 if (!extension_loaded('soap')) {
-	class soapclientmime extends nusoap_client_mime {
+	class soapclientmime extends NusoapClientMime {
 	}
 }
 
@@ -279,7 +280,7 @@ if (!extension_loaded('soap')) {
 *
 * @author   Scott Nichol <snichol@users.sourceforge.net>
 * @author	Thanks to Guillaume and Henning Reich for posting great attachment code to the mail list
-* @version  $Id: nusoapmime.php,v 1.13 2010/04/26 20:15:08 snichol Exp $
+* @version  $Id: nusoapmime.php,v 1.13 2015/05/18 20:15:08 snichol Exp $
 * @access   public
 */
 class nusoap_server_mime extends nusoap_server {

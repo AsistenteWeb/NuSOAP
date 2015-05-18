@@ -2,15 +2,16 @@
 namespace Aw\Nusoap;
 /**
 *
-* nusoap_server allows the user to create a SOAP server
+* NusoapServer allows the user to create a SOAP server
 * that is capable of receiving messages and returning responses
 *
 * @author   Dietrich Ayala <dietrich@ganx4.com>
 * @author   Scott Nichol <snichol@users.sourceforge.net>
-* @version  $Id: class.soap_server.php,v 1.63 2010/04/26 20:15:08 snichol Exp $
+* @author   Yamir Ramirez <ysramire@gmail.com>
+* @version  $Id: class.soap_server.php,v 1.63 2015/05/18 20:15:08 snichol Exp $
 * @access   public
 */
-class nusoap_server extends nusoap_base {
+class NusoapServer extends NusoapBase {
 	/**
 	 * HTTP headers of request
 	 * @var array
@@ -167,7 +168,7 @@ class nusoap_server extends nusoap_base {
     * @param mixed $wsdl file path or URL (string), or wsdl instance (object)
 	* @access   public
 	*/
-	function nusoap_server($wsdl=false){
+	function __construct($wsdl=false){
 		parent::__construct();;
 		// turn on debugging?
 		global $debug;
@@ -184,13 +185,13 @@ class nusoap_server extends nusoap_base {
 		}
 
 		if (isset($debug)) {
-			$this->debug("In nusoap_server, set debug_flag=$debug based on global flag");
+			$this->debug("In NusoapServer, set debug_flag=$debug based on global flag");
 			$this->debug_flag = $debug;
 		} elseif (isset($_SERVER['QUERY_STRING'])) {
 			$qs = explode('&', $_SERVER['QUERY_STRING']);
 			foreach ($qs as $v) {
 				if (substr($v, 0, 6) == 'debug=') {
-					$this->debug("In nusoap_server, set debug_flag=" . substr($v, 6) . " based on query string #1");
+					$this->debug("In NusoapServer, set debug_flag=" . substr($v, 6) . " based on query string #1");
 					$this->debug_flag = substr($v, 6);
 				}
 			}
@@ -198,7 +199,7 @@ class nusoap_server extends nusoap_base {
 			$qs = explode('&', $HTTP_SERVER_VARS['QUERY_STRING']);
 			foreach ($qs as $v) {
 				if (substr($v, 0, 6) == 'debug=') {
-					$this->debug("In nusoap_server, set debug_flag=" . substr($v, 6) . " based on query string #2");
+					$this->debug("In NusoapServer, set debug_flag=" . substr($v, 6) . " based on query string #2");
 					$this->debug_flag = substr($v, 6);
 				}
 			}
@@ -206,14 +207,14 @@ class nusoap_server extends nusoap_base {
 
 		// wsdl
 		if($wsdl){
-			$this->debug("In nusoap_server, WSDL is specified");
-			if (is_object($wsdl) && (get_class($wsdl) == 'wsdl')) {
+			$this->debug("In NusoapServer, WSDL is specified");
+			if (is_object($wsdl) && (get_class($wsdl) == 'Aw\Nusoap\Wsdl')) {
 				$this->wsdl = $wsdl;
 				$this->externalWSDLURL = $this->wsdl->wsdl;
 				$this->debug('Use existing wsdl instance from ' . $this->externalWSDLURL);
 			} else {
 				$this->debug('Create wsdl from ' . $wsdl);
-				$this->wsdl = new wsdl($wsdl);
+				$this->wsdl = new Wsdl($wsdl);
 				$this->externalWSDLURL = $wsdl;
 			}
 			$this->appendDebug($this->wsdl->getDebug());
@@ -647,7 +648,7 @@ class nusoap_server extends nusoap_base {
 	function serialize_return() {
 		$this->debug('Entering serialize_return methodname: ' . $this->methodname . ' methodURI: ' . $this->methodURI);
 		// if fault
-		if (isset($this->methodreturn) && is_object($this->methodreturn) && ((get_class($this->methodreturn) == 'soap_fault') || (get_class($this->methodreturn) == 'nusoap_fault'))) {
+		if (isset($this->methodreturn) && is_object($this->methodreturn) && ((get_class($this->methodreturn) == 'soap_fault') || (get_class($this->methodreturn) == 'Aw\Nusoap\NusoapFault'))) {
 			$this->debug('got a fault object from method');
 			$this->fault = $this->methodreturn;
 			return;
@@ -865,9 +866,9 @@ class nusoap_server extends nusoap_base {
 			// should be US-ASCII for HTTP 1.0 or ISO-8859-1 for HTTP 1.1
 			$this->xml_encoding = 'ISO-8859-1';
 		}
-		$this->debug('Use encoding: ' . $this->xml_encoding . ' when creating nusoap_parser');
+		$this->debug('Use encoding: ' . $this->xml_encoding . ' when creating NusoapParser');
 		// parse response, get soap parser obj
-		$parser = new nusoap_parser($data,$this->xml_encoding,'',$this->decode_utf8);
+		$parser = new NusoapParser($data,$this->xml_encoding,'',$this->decode_utf8);
 		// parser debug
 		$this->debug("parser debug: \n".$parser->getDebug());
 		// if fault occurred during message parsing
@@ -1027,7 +1028,7 @@ class nusoap_server extends nusoap_base {
 		if ($faultdetail == '' && $this->debug_flag) {
 			$faultdetail = $this->getDebug();
 		}
-		$this->fault = new nusoap_fault($faultcode,$faultactor,$faultstring,$faultdetail);
+		$this->fault = new NusoapFault($faultcode,$faultactor,$faultstring,$faultdetail);
 		$this->fault->soap_defencoding = $this->soap_defencoding;
 	}
 
@@ -1086,7 +1087,7 @@ class nusoap_server extends nusoap_base {
             $schemaTargetNamespace = $namespace;
         }
         
-		$this->wsdl = new wsdl;
+		$this->wsdl = new Wsdl;
 		$this->wsdl->serviceName = $serviceName;
         $this->wsdl->endpoint = $endpoint;
 		$this->wsdl->namespaces['tns'] = $namespace;
@@ -1095,7 +1096,7 @@ class nusoap_server extends nusoap_base {
 		if ($schemaTargetNamespace != $namespace) {
 			$this->wsdl->namespaces['types'] = $schemaTargetNamespace;
 		}
-        $this->wsdl->schemas[$schemaTargetNamespace][0] = new nusoap_xmlschema('', '', $this->wsdl->namespaces);
+        $this->wsdl->schemas[$schemaTargetNamespace][0] = new NusoapXmlschema('', '', $this->wsdl->namespaces);
         if ($style == 'document') {
 	        $this->wsdl->schemas[$schemaTargetNamespace][0]->schemaInfo['elementFormDefault'] = 'qualified';
         }
@@ -1112,10 +1113,4 @@ class nusoap_server extends nusoap_base {
             'location'=>$endpoint,
             'bindingType'=>'http://schemas.xmlsoap.org/wsdl/soap/');
     }
-}
-
-/**
- * Backward compatibility
- */
-class soap_server extends nusoap_server {
 }

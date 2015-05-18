@@ -17,10 +17,11 @@ namespace Aw\Nusoap;
 *
 * @author   Dietrich Ayala <dietrich@ganx4.com>
 * @author   Scott Nichol <snichol@users.sourceforge.net>
-* @version  $Id: class.soapclient.php,v 1.69 2010/04/26 20:15:08 snichol Exp $
+ * @author   Yamir Ramirez <ysramire@gmail.com>
+* @version  $Id: class.soapclient.php,v 1.69 2015/05/18 20:15:08 snichol Exp $
 * @access   public
 */
-class nusoap_client extends nusoap_base  {
+class NusoapClient extends NusoapBase  {
 
 	var $username = '';				// Username for HTTP authentication
 	var $password = '';				// Password for HTTP authentication
@@ -108,7 +109,7 @@ class nusoap_client extends nusoap_base  {
 
 		// make values
 		if($wsdl){
-			if (is_object($endpoint) && (get_class($endpoint) == 'wsdl')) {
+			if (is_object($endpoint) && (get_class($endpoint) == 'Aw\Nusoa\Wsdl')) {
 				$this->wsdl = $endpoint;
 				$this->endpoint = $this->wsdl->wsdl;
 				$this->wsdlFile = $this->endpoint;
@@ -369,7 +370,7 @@ class nusoap_client extends nusoap_base  {
 	 */
 	function loadWSDL() {
 		$this->debug('instantiating wsdl class with doc: '.$this->wsdlFile);
-		$this->wsdl = new wsdl('',$this->proxyhost,$this->proxyport,$this->proxyusername,$this->proxypassword,$this->timeout,$this->response_timeout,$this->curl_options,$this->use_curl);
+		$this->wsdl = new Wsdl('',$this->proxyhost,$this->proxyport,$this->proxyusername,$this->proxypassword,$this->timeout,$this->response_timeout,$this->curl_options,$this->use_curl);
 		$this->wsdl->setCredentials($this->username, $this->password, $this->authtype, $this->certRequest);
 		$this->wsdl->fetchWSDL($this->wsdlFile);
 		$this->checkWSDL();
@@ -510,8 +511,8 @@ class nusoap_client extends nusoap_base  {
 			// should be US-ASCII for HTTP 1.0 or ISO-8859-1 for HTTP 1.1
 			$this->xml_encoding = 'ISO-8859-1';
 		}
-		$this->debug('Use encoding: ' . $this->xml_encoding . ' when creating nusoap_parser');
-		$parser = new nusoap_parser($data,$this->xml_encoding,$this->operation,$this->decode_utf8);
+		$this->debug('Use encoding: ' . $this->xml_encoding . ' when creating NusoapParser');
+		$parser = new NusoapParser($data,$this->xml_encoding,$this->operation,$this->decode_utf8);
 		// add parser debug data to our debug
 		$this->appendDebug($parser->getDebug());
 		// if parse errors
@@ -790,7 +791,7 @@ class nusoap_client extends nusoap_base  {
 				unset($paramCommentStr);
 			}
 		}
-		$evalStr = 'class nusoap_proxy_'.$r.' extends nusoap_client {
+		$evalStr = 'class nusoap_proxy_'.$r.' extends NusoapClient {
 	'.$evalStr.'
 }';
 		return $evalStr;
@@ -982,7 +983,7 @@ if (!extension_loaded('soap')) {
 	/**
 	 *	For backwards compatiblity, define soapclient unless the PHP SOAP extension is loaded.
 	 */
-	class soapclient extends nusoap_client {
+	class soapclient extends NusoapClient {
 	}
 }
 ?>
