@@ -969,7 +969,7 @@ class SoapTransportHttp extends NusoapBase {
         	$err = 'cURL ERROR: '.curl_errno($this->ch).': '.$cErr.'<br>';
         	// TODO: there is a PHP bug that can cause this to SEGV for CURLINFO_CONTENT_TYPE
 			foreach(curl_getinfo($this->ch) as $k => $v){
-				$err .= "$k: $v<br>";
+//				$err .= "$k: $v<br>"; //TODO this is a multilevel array error the information is for debuging http://stackoverflow.com/questions/22482881/notice-array-to-string-conversion-usign-nusoap
 			}
 			$this->debug($err);
 			$this->setError($err);
