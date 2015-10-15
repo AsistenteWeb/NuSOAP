@@ -117,7 +117,11 @@ class NusoapParser extends NusoapBase {
 				$this->appendDebug($this->varDump($this->message));
 				$this->debug('parsed successfully, found root struct: '.$this->root_struct.' of name '.$this->root_struct_name);
 				// get final value
-				$this->soapresponse = $this->message[$this->root_struct]['result'];
+				if( $this->message[$this->root_struct]['nil'] ) {
+					$this->soapresponse = null;
+				} else {
+					$this->soapresponse = $this->message[$this->root_struct]['result'];
+				}
 				// get header value
 				if($this->root_header != '' && isset($this->message[$this->root_header]['result'])){
 					$this->soapheader = $this->message[$this->root_header]['result'];
