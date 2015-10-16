@@ -4,7 +4,8 @@
   "description": "PHP5 library for SOAP.",
   "keywords": ["SOAP", "nuSOAP", "asistenteweb"],
   "homepage": "https://github.com/AsistenteWeb/nuSOAP",
-  "license": "GNU",
+  "license": "LGPL-2.1",
+  "minimum-stability" : "stable",
   "authors": [
     {
       "name": "Asistente Web",
