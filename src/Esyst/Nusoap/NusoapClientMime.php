@@ -1,5 +1,5 @@
 <?php
-namespace Aw\Nusoap;
+namespace Esyst\Nusoap;
 /*
 $Id: nusoapmime.php,v 1.13 2015/05/18 20:15:08 snichol Exp $
 

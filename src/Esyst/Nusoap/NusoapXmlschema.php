@@ -1,5 +1,5 @@
 <?php
-namespace Aw\Nusoap;
+namespace Esyst\Nusoap;
 
 /**
 * parses an XML Schema, allows access to it's data, other utility methods.

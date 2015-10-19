@@ -1,6 +1,6 @@
 <?php
 
-namespace Aw\Nusoap;
+namespace Esyst\Nusoap;
 
 /**
  * Backward compatibility
