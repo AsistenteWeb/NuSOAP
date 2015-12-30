@@ -1,5 +1,5 @@
 <?php
-namespace Aw\Nusoap;
+namespace Esyst\Nusoap;
 /**
 * Contains information for a SOAP fault.
 * Mainly used for returning faults from deployed functions

@@ -1,5 +1,5 @@
 <?php
-namespace Aw\Nusoap;
+namespace Esyst\Nusoap;
 
 
 
@@ -1299,7 +1299,7 @@ class Wsdl extends NusoapBase {
 		}
 
 		// if a soapval has been supplied, let its type override the WSDL
-    	if (is_object($value) && get_class($value) == 'Aw\Nusoap\Soapval') {
+    	if (is_object($value) && get_class($value) == 'Esyst\Nusoap\Soapval') {
     		if ($value->type_ns) {
     			$type = $value->type_ns . ':' . $value->type;
 		    	$forceType = true;

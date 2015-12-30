@@ -1,10 +1,11 @@
-AsistenteWeb - nuSOAP
+Esyst - NuSOAP
 =====================
 
-AsistenteWeb/nuSOAP based in NuSphere NuSOAP.
+Esyst/nusoap based on NuSphere NuSOAP.
 
-It is a set of PHP classes.  
-No PHP extensions required!!!
+This is a fork of AsistenteWeb/NuSOAP with some bugs fixed, unfortunately my pull requests were not responded to.
+
+See also: https://github.com/Esyst/PHP-Soap for a library that makes NuSoap compatible with the native Soapclient API (drop in replacement).
 
 Create and consume web services based on:
 - SOAP 1.1
@@ -16,12 +17,11 @@ Instalation
 ``` json
 {
     "require": {
-        "asistenteweb/nusoap": "dev-master"    
-
+				"esyst/nusoap": "0.1.1"    
     }
 }
 ```
-To actually install AsistenteWeb/nuSOAP  in your project, download the composer binary and run it:
+To actually install Esyst/nusoap  in your project, download the composer binary and run it:
 
 ``` bash
 wget http://getcomposer.org/composer.phar
@@ -34,7 +34,7 @@ php composer.phar install
 Use it
 ------
 ``` php
-use Aw\Nusoap\NusoapClient;
+use Esyst\Nusoap\NusoapClient;
 
        $client = new NusoapClient("https://yourserver.org?wsdl", true);
        $result = $client->call('method', $variables);

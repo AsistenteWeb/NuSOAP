@@ -1,5 +1,5 @@
 <?php
-namespace Aw\Nusoap;
+namespace Esyst\Nusoap;
 
 /*
 $Id: class.nusoap_base.php,v 1.56 2015/05/18 20:15:08 snichol Exp $
@@ -411,7 +411,7 @@ class NusoapBase {
 		$this->appendDebug('value=' . $this->varDump($val));
 		$this->appendDebug('attributes=' . $this->varDump($attributes));
 		
-    	if (is_object($val) && get_class($val) == 'Aw\Nusoap\Soapval' && (! $soapval)) {
+    	if (is_object($val) && get_class($val) == 'Esyst\Nusoap\Soapval' && (! $soapval)) {
     		$this->debug("serialize_val: serialize soapval");
         	$xml = $val->serialize($use);
 			$this->appendDebug($val->getDebug());
@@ -532,7 +532,7 @@ class NusoapBase {
 				break;
 			case is_object($val):
 		   		$this->debug("serialize_val: serialize object");
-		    	if (get_class($val) == 'Aw\Nusoap\Soapval') {
+		    	if (get_class($val) == 'Esyst\Nusoap\Soapval') {
 		    		$this->debug("serialize_val: serialize soapval object");
 		        	$pXml = $val->serialize($use);
 					$this->appendDebug($val->getDebug());
@@ -568,7 +568,7 @@ class NusoapBase {
 					$i = 0;
 					if(is_array($val) && count($val)> 0){
 						foreach($val as $v){
-	                    	if(is_object($v) && get_class($v) ==  'Aw\Nusoap\Soapval'){
+	                    	if(is_object($v) && get_class($v) ==  'Esyst\Nusoap\Soapval'){
 								$tt_ns = $v->type_ns;
 								$tt = $v->type;
 							} elseif (is_array($v)) {
@@ -697,7 +697,7 @@ class NusoapBase {
 		if (is_array($headers)) {
 			$xml = '';
 			foreach ($headers as $k => $v) {
-				if (is_object($v) && get_class($v) == 'Aw\Nusoap\Soapval') {
+				if (is_object($v) && get_class($v) == 'Esyst\Nusoap\Soapval') {
 					$xml .= $this->serialize_val($v, false, false, false, false, false, $use);
 				} else {
 					$xml .= $this->serialize_val($v, $k, false, false, false, false, $use);

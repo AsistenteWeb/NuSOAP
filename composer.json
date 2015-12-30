@@ -1,11 +1,15 @@
 {
-  "name": "asistenteweb/nusoap",
+  "name": "esyst/nusoap",
   "type": "library",
   "description": "PHP5 library for SOAP.",
-  "keywords": ["SOAP", "nuSOAP", "asistenteweb"],
-  "homepage": "https://github.com/AsistenteWeb/nuSOAP",
+  "keywords": ["SOAP", "nuSOAP", "esyst"],
+  "homepage": "https://github.com/gerben-van-eck/NuSOAP",
   "license": "GNU",
   "authors": [
+	{
+		"name": "Esyst",
+		"homepage" : "http://www.esyst.nl"
+	},
     {
       "name": "Asistente Web",
       "homepage": "http://www.asistenteweb.com"
@@ -24,7 +28,7 @@
   },
   "autoload": {
     "psr-0": {
-      "Aw\\Nusoap": "src/"
+      "Esyst\\Nusoap": "src/"
     }
   }
 }

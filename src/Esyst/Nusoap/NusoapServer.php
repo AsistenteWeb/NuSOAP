@@ -1,5 +1,5 @@
 <?php
-namespace Aw\Nusoap;
+namespace Esyst\Nusoap;
 /**
 *
 * NusoapServer allows the user to create a SOAP server
@@ -208,7 +208,7 @@ class NusoapServer extends NusoapBase {
 		// wsdl
 		if($wsdl){
 			$this->debug("In NusoapServer, WSDL is specified");
-			if (is_object($wsdl) && (get_class($wsdl) == 'Aw\Nusoap\Wsdl')) {
+			if (is_object($wsdl) && (get_class($wsdl) == 'Esyst\Nusoap\Wsdl')) {
 				$this->wsdl = $wsdl;
 				$this->externalWSDLURL = $this->wsdl->wsdl;
 				$this->debug('Use existing wsdl instance from ' . $this->externalWSDLURL);
@@ -648,7 +648,7 @@ class NusoapServer extends NusoapBase {
 	function serialize_return() {
 		$this->debug('Entering serialize_return methodname: ' . $this->methodname . ' methodURI: ' . $this->methodURI);
 		// if fault
-		if (isset($this->methodreturn) && is_object($this->methodreturn) && ((get_class($this->methodreturn) == 'soap_fault') || (get_class($this->methodreturn) == 'Aw\Nusoap\NusoapFault'))) {
+		if (isset($this->methodreturn) && is_object($this->methodreturn) && ((get_class($this->methodreturn) == 'soap_fault') || (get_class($this->methodreturn) == 'Esyst\Nusoap\NusoapFault'))) {
 			$this->debug('got a fault object from method');
 			$this->fault = $this->methodreturn;
 			return;
